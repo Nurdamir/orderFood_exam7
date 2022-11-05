@@ -13,7 +13,7 @@ const OrderFood: React.FC<PropsOrder> = (props) => {
     <div key={keyOrder}>
       <span>{props.name}</span>
       <span>x{props.count}</span>
-      <span>x {props.price} KGS</span>
+      <span>{props.price} KGS</span>
       <button onClick={props.delete}>Delete</button>
     </div>
   );

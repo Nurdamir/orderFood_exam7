@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
 import './App.css';
 import {FoodsPropsType} from "../types";
+import {FoodsTypeB} from "../types";
 import drinksImage from "../assets/drinks.png";
 import knifeSpoonImage from '../assets/knifeSpoon.png';
 import Food from "../components/Food/Food";
-import Orders from "../components/Orders/Orders";
+// import Orders from "../components/Orders/Orders";
+import OrderFood from "../components/OrderFood/OrderFood";
+import TotalPrice from "../components/TotalPrice/TotalPrice";
 
 const FOODS: FoodsPropsType[] = [
   {name: 'Hamburger', price: 100, image: knifeSpoonImage},
@@ -26,7 +29,6 @@ function App() {
     {name: 'Cola', count: 0},
   ]);
 
-
   const countPlus = (nameFood: string) => {
     setFoods(prev => prev.map(food => {
       if(food.name !== nameFood) return food;
@@ -39,7 +41,16 @@ function App() {
       if(food.name !== nameFood) return food;
       return {...food, count: food.count = 0};
     }))
-  }
+  };
+
+  const totalPrice = FOODS.reduce((acc, cost) => {
+    foods.forEach(item => {
+      if (cost.name === item.name) {
+        acc += cost.price * item.count
+      }
+    })
+    return acc;
+  }, 0)
 
 
   return (
@@ -61,9 +72,27 @@ function App() {
         }
       </div>
 
+
       <div className='orders' >
-        {/*{foods.map(elem => */}
-        {/*<Orders name={} count={} price={} delete={})}*/}
+        <div className="Orders">
+          <h4>Orders</h4>
+          {foods.map((elem, index) => {
+            let price = (FOODS.filter(el => el.name === elem.name))[0].price;
+            let foodName = (FOODS.filter(el => el.name === elem.name))[0].name;
+            if (elem.count > 0) {
+              return (
+                <OrderFood
+                  count={elem.count}
+                  name={elem.name}
+                  price={price}
+                  delete={() => deleteFood(foodName)}/>
+              )
+            }
+            return null;
+          })}
+        </div>
+
+        <TotalPrice price={totalPrice}/>
       </div>
     </div>
   );
