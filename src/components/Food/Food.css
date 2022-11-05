@@ -1,0 +1,18 @@
+.foods {
+    display: flex;
+    flex-wrap: wrap;
+    /*flex-direction: column;*/
+    justify-content: space-around;
+    width: 35%;
+    align-items: center;
+    border: 2px solid red;
+
+}
+
+.imgFood {
+    width: 25%;
+}
+namePrice {
+    width: 50%;
+}
+
