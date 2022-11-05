@@ -1,0 +1,23 @@
+.orderDiv {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.priceBtn, .nameCount {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: 45%;
+}
+
+.btnDelete {
+    padding: 5px;
+    font-size: 20px;
+    border: 2px solid grey;
+    border-radius: 5px;
+}
+
+.orderName {
+    font-weight: bold;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import './OrderFood.css'
 
 interface PropsOrder {
   count: number;
@@ -10,11 +11,15 @@ interface PropsOrder {
 const OrderFood: React.FC<PropsOrder> = (props) => {
   const keyOrder = Math.random();
   return (
-    <div key={keyOrder}>
-      <span>{props.name}</span>
-      <span>x{props.count}</span>
-      <span>{props.price} KGS</span>
-      <button onClick={props.delete}>Delete</button>
+    <div className="orderDiv" key={keyOrder}>
+      <div className="nameCount">
+      <span className="orderName">{props.name}</span>
+      <span className="orderCount">x {props.count}</span>
+      </div>
+      <div className="priceBtn">
+      <span className="orderPrice">{props.price} KGS</span>
+      <button className="btnDelete" onClick={props.delete}>Delete</button>
+      </div>
     </div>
   );
 };

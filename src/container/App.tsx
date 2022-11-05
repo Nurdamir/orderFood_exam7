@@ -55,8 +55,9 @@ function App() {
 
   return (
     <div className="App">
-      <div className='foods'>
-        {/*<h3>Foods</h3>*/}
+      <div className='Foods'>
+        <h2>Foods</h2>
+        <div className="allFoods">
         {foods.map((item, index) => {
             let pic = (FOODS.filter(img => img.name === item.name))[0].image;
             let price = (FOODS.filter(el => el.name === item.name))[0].price
@@ -70,12 +71,12 @@ function App() {
             )
           })
         }
+        </div>
+
       </div>
-
-
-      <div className='orders' >
         <div className="Orders">
-          <h4>Orders</h4>
+          <h2>Orders</h2>
+          <div className="orderBlock">
           {foods.map((elem, index) => {
             let price = (FOODS.filter(el => el.name === elem.name))[0].price;
             let foodName = (FOODS.filter(el => el.name === elem.name))[0].name;
@@ -86,15 +87,13 @@ function App() {
                   name={elem.name}
                   price={price}
                   delete={() => deleteFood(foodName)}/>
-              )
-            }
+              )}
             return null;
           })}
+            <TotalPrice price={totalPrice}/>
+          </div>
         </div>
-
-        <TotalPrice price={totalPrice}/>
       </div>
-    </div>
   );
 }
 
